@@ -1,10 +1,10 @@
 require "./bdecoder.rb"
 require "test/unit"
 
-class TestBencodeParser < Test::Unit::TestCase
+class TestBdecoder < Test::Unit::TestCase
   def test_int_parsing
     parser = Bdecoder.new("i3e")
-    assert_equal(3, parser.parse_int(0))
+    assert_equal(3, parser.parse_int)
 
     #Ignores everything after "e".
     parser = Bdecoder.new("i99eabc")
@@ -17,7 +17,7 @@ class TestBencodeParser < Test::Unit::TestCase
 
   def test_string_parsing
     parser = Bdecoder.new("3:aaa")
-    assert_equal("aaa", parser.parse_string(0))
+    assert_equal("aaa", parser.parse_string)
 
     parser = Bdecoder.new("9:something")
     assert_equal("something", parser.parse_string(0))
@@ -40,7 +40,7 @@ class TestBencodeParser < Test::Unit::TestCase
 
   def test_hash_parsing
     parser = Bdecoder.new("d3:cow3:moo4:spam4:eggse")
-    assert_equal({"cow" => "moo", "spam" => "eggs"} , parser.parse_hash(0))
+    assert_equal({"cow" => "moo", "spam" => "eggs"} , parser.parse_hash)
 
     #A hash with a list inside.
     parser = Bdecoder.new("d4:spaml1:a1:bee")

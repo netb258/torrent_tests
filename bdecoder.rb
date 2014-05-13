@@ -1,4 +1,4 @@
-#Converts Bencoded strings into Ruby structures.
+#Converts Bencoded strings into Ruby integers, strings, arrays and hashes.
 class Bdecoder
   def initialize(encoded_string)
     @bencode = encoded_string.split(//) #Convert to char array.
