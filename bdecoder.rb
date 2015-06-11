@@ -16,7 +16,7 @@ class Bdecoder
     @bencode.slice(start_position, str_size).join
   end
 
-  def parse_list(start_position = 1)
+  def parse_list(start_position = 1) #We start with start_position = 1, to bypass the "l" symbol for lists.
     first_char = @bencode[start_position]
     result = nil
 

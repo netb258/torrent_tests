@@ -16,8 +16,8 @@ if hash["announce-list"] != nil
 end
 
 #Get the 20 byte SHA1 of the info hash with SHA1.digest. Also, it needs to be URL encoded with URI::encode.
-#Note that hash["info"] is currently a Ruby hash, need to convert it to bencode with Bencoder.new.encode_hash.
-info_hash = Digest::SHA1.digest( Bencoder.new.encode_hash(hash["info"]) )
+#Note that hash["info"] is currently a Ruby hash, need to convert it to bencode with Bencoder.encode_hash.
+info_hash = Digest::SHA1.digest( Bencoder.encode_hash(hash["info"]) )
 info_hash = URI::encode(info_hash)
 
 #Generate a random uid with a simple algorithm.
